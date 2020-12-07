@@ -9,7 +9,7 @@ mov sp, bp
 
 mov bx, MSG_REAL_MODE
 call print
-call print_ln
+call print_nl
 
 call load_kernel
 call switch_to_pm
@@ -17,7 +17,7 @@ jmp $
 
 %include "../print.asm"
 %include "../hex.asm"
-%include "../load_disk.asm"
+%include "../load_disc.asm"
 %include "../gdt32bit.asm"
 %include "../print32bit.asm"
 %include "../switch32bit.asm"
@@ -41,7 +41,7 @@ BEGIN_PM:
 	jmp $
 
 
-BOOT_DRIVE dv 0
+BOOT_DRIVE db 0
 MSG_REAL_MODE db "Started in 16-bit Real Mode", 0
 MSG_PROT_MODE db "Landed in 32 bit Protected MOde", 0
 MSG_LOAD_KERNEL db "Loading kernel into memory", 0

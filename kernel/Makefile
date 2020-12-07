@@ -18,6 +18,9 @@ kernel.dis: kernel.bin
 bootsect.dis: bootsect.asm
 	nasm $< -f bin -o $@
 
+os-image.bin: bootsect.bin kernel.bin
+	cat $^ > $@
+
 run: os-image.bin
 	qemu-system-i386 -fda $<
 
