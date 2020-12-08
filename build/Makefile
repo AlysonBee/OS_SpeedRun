@@ -7,7 +7,7 @@ OBJ = $(C_SOURCES:.c=.o)
 CC = /usr/local/i386elfgcc/bin/i386-elf-gcc
 GDB = /usr/local/i386elfgcc/bin/i386-elf-gdb
 
-CFLAGS -g
+CFLAGS = -g
 
 
 os-image-bin: bootstuff/bootsector.bin kernel.bin
