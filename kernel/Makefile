@@ -15,10 +15,10 @@ kernel.o:kernel.c
 kernel.dis: kernel.bin
 	ndisasm -b 32 $< > $@
 
-bootsect.dis: bootsect.asm
+bootsector.dis: bootsector.asm
 	nasm $< -f bin -o $@
 
-os-image.bin: bootsect.bin kernel.bin
+os-image.bin: bootsector.bin kernel.bin
 	cat $^ > $@
 
 run: os-image.bin
