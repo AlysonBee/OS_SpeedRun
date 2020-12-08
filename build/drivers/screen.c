@@ -68,12 +68,13 @@ int print_char(char c, int col, int row, char attr)
 		i = 1;
 		while (i < MAX_ROWS)
 		{
-			memory_copy(get_offset(0, i) + VIDEO_ADDRESS,
-				get_offset(0, i-1) + VIDEO_ADDRESS,
+			memory_copy(
+				(char *)get_offset(0, i) + VIDEO_ADDRESS,
+				(char *)get_offset(0, i-1) + VIDEO_ADDRESS,
 				MAX_COLS * 2);
 			i++;
 		}
-		char *last_line = get_offset(0, MAX_ROWS-1) + VIDEO_ADDRESS;
+		char *last_line = (char *)get_offset(0, MAX_ROWS-1) + VIDEO_ADDRESS;
 		i = 0;
 		while (i < MAX_COLS * 2)
 		{

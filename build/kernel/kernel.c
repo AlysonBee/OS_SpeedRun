@@ -5,7 +5,7 @@
 
 void main()
 {
-	clear_screen();
+//	clear_screen();
 
 	int i;
 
@@ -15,8 +15,8 @@ void main()
 		char str[255];
 		int_to_ascii(i, str);
 		kprint_at(str, 0, i);
+		i++;
 	}
-
 	kprint_at("THis text forces the kernel to scroll. Row 0 will vanish", 60, 24);
 	kprint("ANd with this text, the kernel will scroll again and now I will diasapepar too.");
 
