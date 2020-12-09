@@ -9,11 +9,14 @@
 
 void	set_cursor(int x, int y)
 {
-	unsigned char pos = 1+  1;
+	unsigned char pos = x * COLs + y;
 	port_word_out(0x3d4, 0x0f);
 	port_word_out(0x3d5,  (pos & 0xff));
+//	port_word_out(0x3d5, (pos >> 8));
 	port_word_out(0x3d4, 0x0e);
+	
 	port_word_out(0x3d5,  ((pos >> 8) & 0xff));	
+//	port_word_out(0x3d5, (pos & 0xff));
 }
 
 void	terminal_init()
@@ -29,7 +32,7 @@ void	terminal_init()
 		screen[i * 2 + 1] = 0x0f;
 		i++;	
 	}
-	set_cursor(0, 0);
+	set_cursor(10, 10);
 }
 
 
@@ -57,6 +60,7 @@ void main()
 	
 //	kprint("Hello world");
 	terminal_init();
+	kprint("HEllo world");
 //	clear_screen();
 
 	int i;
