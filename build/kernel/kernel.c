@@ -10,6 +10,11 @@
 void	set_cursor(int x, int y)
 {
 	unsigned char pos = y * COLS + x;
+	pos = x;
+	if (y > 0)
+	{
+		pos += (y * 80);
+	}
 	port_byte_out(0x3d4, 0x0f);
 	port_byte_out(0x3d5, (unsigned short) (pos & 0xff));
 //	port_word_out(0x3d5, (pos >> 8));
@@ -32,7 +37,7 @@ void	terminal_init()
 		screen[i * 2 + 1] = 0x0f;
 		i++;	
 	}
-	set_cursor(1, 0);
+	set_cursor(0, 2);
 }
 
 
